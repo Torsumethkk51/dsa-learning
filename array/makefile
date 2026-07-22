@@ -16,4 +16,11 @@ run_bubble_sort:
 	# run program
 	${BUBBLE_SORT_PATH}
 
+run_selection_sort:
+	# compile program
+	gcc ${SELECTION_SORT_PATH}.c -L${LIB_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../../${LIB_PATH}' -o ${SELECTION_SORT_PATH}
+
+	# run program
+	${SELECTION_SORT_PATH}
+
 .PHONY: all clean
