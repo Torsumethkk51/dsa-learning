@@ -1,6 +1,7 @@
 LIB_PATH = lib
 BUBBLE_SORT_PATH = learning/bubble_sort/bubble_sort
 SELECTION_SORT_PATH = learning/selection_sort/selection_sort
+INSERTION_SORT_PATH = learning/insertion_sort/insertion_sort
 
 compile_lib: 
 	# compile array_lib.c to libarray_lib.o
@@ -22,5 +23,12 @@ run_selection_sort:
 
 	# run program
 	${SELECTION_SORT_PATH}
+
+run_insertion_sort:
+	# compile program
+	gcc ${INSERTION_SORT_PATH}.c -L${LIB_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../../${LIB_PATH}' -o ${INSERTION_SORT_PATH};
+
+	# run program
+	${INSERTION_SORT_PATH}
 
 .PHONY: all clean
