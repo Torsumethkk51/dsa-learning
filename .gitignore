@@ -1,0 +1,9 @@
+# Prerequisites and Object files
+*.o
+
+# Linker output and libraries
+*.so
+*.a
+
+# Executables
+*.out
