@@ -3,8 +3,9 @@ BUILD_PATH = build
 BUBBLE_SORT = bubble_sort
 SELECTION_SORT = selection_sort
 INSERTION_SORT = insertion_sort
+QUICKSORT = quicksort
 
-all: compile_libs run_bubble_sort run_selection_sort run_insertion_sort
+all: compile_libs run_bubble_sort run_selection_sort run_insertion_sort run_quicksort
 
 ${BUILD_PATH}:
 	mkdir -p ${BUILD_PATH}
@@ -36,6 +37,13 @@ run_insertion_sort: compile_libs
 
 #		run program
 		${BUILD_PATH}/${INSERTION_SORT}
+
+run_quicksort: compile_libs
+#		compile program
+		gcc learning/${QUICKSORT}/${QUICKSORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../${BUILD_PATH}' -o ${BUILD_PATH}/${QUICKSORT}
+
+#		run program
+		${BUILD_PATH}/${QUICKSORT}
 
 clear:
 #		clear every build artifacts in build/ directory
