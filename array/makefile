@@ -1,34 +1,44 @@
 LIB_PATH = lib
-BUBBLE_SORT_PATH = learning/bubble_sort/bubble_sort
-SELECTION_SORT_PATH = learning/selection_sort/selection_sort
-INSERTION_SORT_PATH = learning/insertion_sort/insertion_sort
+BUILD_PATH = build
+BUBBLE_SORT = bubble_sort
+SELECTION_SORT = selection_sort
+INSERTION_SORT = insertion_sort
 
-compile_lib: 
-	# compile array_lib.c to libarray_lib.o
-	gcc -c -fPIC ${LIB_PATH}/array_lib.c -o ${LIB_PATH}/libarray_lib.o
+all: compile_libs run_bubble_sort run_selection_sort run_insertion_sort
 
-	# share libarray_lib.o to dynamic library
-	gcc -shared ${LIB_PATH}/libarray_lib.o -o ${LIB_PATH}/libarray_lib.so
+${BUILD_PATH}:
+	mkdir -p ${BUILD_PATH}
 
-run_bubble_sort:
-	# compile program
-	gcc ${BUBBLE_SORT_PATH}.c -L${LIB_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../../${LIB_PATH}' -o ${BUBBLE_SORT_PATH}
+compile_libs: ${BUILD_PATH}
+# 	compile array lib c extension file to o extension file
+		gcc -c -fPIC ${LIB_PATH}/array_lib.c -o ${BUILD_PATH}/libarray_lib.o
 
-	# run program
-	${BUBBLE_SORT_PATH}
+#		compile array lib o extension file to so extension file
+		gcc -shared ${BUILD_PATH}/libarray_lib.o -o ${BUILD_PATH}/libarray_lib.so
 
-run_selection_sort:
-	# compile program
-	gcc ${SELECTION_SORT_PATH}.c -L${LIB_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../../${LIB_PATH}' -o ${SELECTION_SORT_PATH}
+run_bubble_sort: compile_libs
+#		compile program
+		gcc learning/${BUBBLE_SORT}/${BUBBLE_SORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../${BUILD_PATH}' -o ${BUILD_PATH}/${BUBBLE_SORT}
 
-	# run program
-	${SELECTION_SORT_PATH}
+#		run program
+		${BUILD_PATH}/${BUBBLE_SORT}
 
-run_insertion_sort:
-	# compile program
-	gcc ${INSERTION_SORT_PATH}.c -L${LIB_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../../${LIB_PATH}' -o ${INSERTION_SORT_PATH};
+run_selection_sort: compile_libs
+#		compile program
+		gcc learning/${SELECTION_SORT}/${SELECTION_SORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../${BUILD_PATH}' -o ${BUILD_PATH}/${SELECTION_SORT};
 
-	# run program
-	${INSERTION_SORT_PATH}
+#		run program
+		${BUILD_PATH}/${SELECTION_SORT}
 
-.PHONY: all clean
+run_insertion_sort: compile_libs
+#		compile program
+		gcc learning/${INSERTION_SORT}/${INSERTION_SORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../${BUILD_PATH}' -o ${BUILD_PATH}/${INSERTION_SORT}
+
+#		run program
+		${BUILD_PATH}/${INSERTION_SORT}
+
+clear:
+#		clear every build artifacts in build/ directory
+		rm -rf ${BUILD_PATH}
+
+.PHONY: compile_libs run_bubble_sort run_selection_sort run_insertion_sort all clean
