@@ -2,11 +2,13 @@
 #include <stdio.h>
 
 void quicksort(int *arr, int start, int end) {
+  if (end - start <= 1) return;
+
   int ipivot = end - 1;
   int pivot = arr[ipivot];
   int i = start - 1;
 
-  for (int j = 0; j < ipivot; j++) {
+  for (int j = start; j < ipivot; j++) {
     if (arr[j] < pivot) {
       i++;
       int temp = arr[j];
@@ -21,7 +23,7 @@ void quicksort(int *arr, int start, int end) {
 
   ipivot = i + 1;
 
-  quicksort(arr, 0, ipivot - 1);
+  quicksort(arr, start, ipivot);
   quicksort(arr, ipivot + 1, end);
 }
 
