@@ -4,6 +4,7 @@ BUBBLE_SORT = bubble_sort
 SELECTION_SORT = selection_sort
 INSERTION_SORT = insertion_sort
 QUICKSORT = quicksort
+COUNTING_SORT = counting_sort
 
 all: compile_libs run_bubble_sort run_selection_sort run_insertion_sort run_quicksort
 
@@ -44,6 +45,13 @@ run_quicksort: compile_libs
 
 #		run program
 		${BUILD_PATH}/${QUICKSORT}
+
+run_counting_sort: compile_libs 
+#		compile program
+		gcc learning/${COUNTING_SORT}/${COUNTING_SORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN' -o ${BUILD_PATH}/${COUNTING_SORT}
+
+#   run program
+		${BUILD_PATH}/${COUNTING_SORT}
 
 clear:
 #		clear every build artifacts in build/ directory
