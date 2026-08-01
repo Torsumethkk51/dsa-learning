@@ -19,28 +19,28 @@ compile_libs: ${BUILD_PATH}
 
 run_bubble_sort: compile_libs
 #		compile program
-		gcc learning/${BUBBLE_SORT}/${BUBBLE_SORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../${BUILD_PATH}' -o ${BUILD_PATH}/${BUBBLE_SORT}
+		gcc learning/${BUBBLE_SORT}/${BUBBLE_SORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN' -o ${BUILD_PATH}/${BUBBLE_SORT}
 
 #		run program
 		${BUILD_PATH}/${BUBBLE_SORT}
 
 run_selection_sort: compile_libs
 #		compile program
-		gcc learning/${SELECTION_SORT}/${SELECTION_SORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../${BUILD_PATH}' -o ${BUILD_PATH}/${SELECTION_SORT};
+		gcc learning/${SELECTION_SORT}/${SELECTION_SORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN' -o ${BUILD_PATH}/${SELECTION_SORT};
 
 #		run program
 		${BUILD_PATH}/${SELECTION_SORT}
 
 run_insertion_sort: compile_libs
 #		compile program
-		gcc learning/${INSERTION_SORT}/${INSERTION_SORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../${BUILD_PATH}' -o ${BUILD_PATH}/${INSERTION_SORT}
+		gcc learning/${INSERTION_SORT}/${INSERTION_SORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN' -o ${BUILD_PATH}/${INSERTION_SORT}
 
 #		run program
 		${BUILD_PATH}/${INSERTION_SORT}
 
 run_quicksort: compile_libs
 #		compile program
-		gcc learning/${QUICKSORT}/${QUICKSORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN/../${BUILD_PATH}' -o ${BUILD_PATH}/${QUICKSORT}
+		gcc learning/${QUICKSORT}/${QUICKSORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN' -o ${BUILD_PATH}/${QUICKSORT}
 
 #		run program
 		${BUILD_PATH}/${QUICKSORT}
