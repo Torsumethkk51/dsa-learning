@@ -65,4 +65,4 @@ clear:
 #		clear every build artifacts in build/ directory
 		rm -rf ${BUILD_PATH}
 
-.PHONY: compile_libs run_bubble_sort run_selection_sort run_insertion_sort all clean
+.PHONY: compile_libs run_bubble_sort run_selection_sort run_insertion_sort all run_quicksort run_counting_sort run_radix_sort clear
