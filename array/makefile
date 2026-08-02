@@ -56,7 +56,7 @@ run_counting_sort: compile_libs
 
 run_radix_sort: compile_libs
 #		compile program
-		gcc learning/${RADIX_SORT}/${RADIX_SORT}.c -L${BUILD_PATH} -larray_lib -lm -Wl,-rpath='$$ORIGIN' -o ${BUILD_PATH}/${RADIX_SORT}
+		gcc learning/${RADIX_SORT}/${RADIX_SORT}.c -L${BUILD_PATH} -larray_lib -Wl,-rpath='$$ORIGIN' -o ${BUILD_PATH}/${RADIX_SORT}
 
 #		run program
 		${BUILD_PATH}/${RADIX_SORT}
