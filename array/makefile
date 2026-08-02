@@ -7,7 +7,7 @@ QUICKSORT = quicksort
 COUNTING_SORT = counting_sort
 RADIX_SORT = radix_sort
 
-all: compile_libs run_bubble_sort run_selection_sort run_insertion_sort run_quicksort
+all: compile_libs run_bubble_sort run_selection_sort run_insertion_sort run_quicksort run_counting_sort run_radix_sort
 
 ${BUILD_PATH}:
 	mkdir -p ${BUILD_PATH}
